@@ -10,8 +10,11 @@ import com.t.listview_20201031.student
 import java.math.MathContext
 
 class adapters (val mathContext: Context,
+//                 어떤 화면에?
                 val resId: Int,
+//
                 val mList: ArrayList<student>): ArrayAdapter<student>(mathContext,resId,mList) {
+//                 어떤 목록을 뿌려줄까요?
 
     val inf = LayoutInflater.from(mathContext)
 
