@@ -3,7 +3,9 @@ package com.t.listview_20201031
 import adapters.adapters
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.student_list_item.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +30,16 @@ class MainActivity : AppCompatActivity() {
 
         mAdapter = adapters(this, R.layout.student_list_item,studentListView)
         studentListView.adapter = mAdapter
+
+        studentListView.setOnItemClickListener { parent, view, position, id ->
+//            pisiton : 눌린 위치가 어디인지 알려주는 역할
+//
+//
+//            위치에 맞는 학생의 이름을 토스트로 출력 하기
+            val clickedStudent = mStudentList[position]
+
+            Toast.makeText(this, clickedStudent.name , Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
