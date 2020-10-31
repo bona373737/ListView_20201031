@@ -9,6 +9,8 @@ import android.widget.TextView
 import com.t.listview_20201031.R
 import com.t.listview_20201031.student
 import java.math.MathContext
+import java.util.*
+import kotlin.collections.ArrayList
 
 class adapters (val mathContext: Context,
 //                 어떤 화면에?
@@ -40,8 +42,10 @@ class adapters (val mathContext: Context,
 //        생년월을 가지고 그대로 코드작성하면 1991세 이런식으로 오류내용이 출력된다
 //         ageTxt.text = "${studentData.birthYear}세"
 //        알고리즘을 사용하여 생녀월일을 현재년도 기준의 실제 나이로 변환하는 작업 필요
-//        나이: 현제년도 - 내생년월일 + 1
-        val age = 2020 - studentData.birthYear + 1
+//        나이: 현제년도(앱을 킨시점) - 내생년월일 + 1
+        val now = Calendar.getInstance()
+//         now에 일/시/분/초/년/월의 값이 출력된다.
+        val age = now.get(Calendar.YEAR) - studentData.birthYear + 1
 
         ageTxt.text = "${age}세"
 
