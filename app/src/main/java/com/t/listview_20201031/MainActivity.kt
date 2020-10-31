@@ -3,6 +3,7 @@ package com.t.listview_20201031
 import adapters.adapters
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.student_list_item.view.*
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     val mStudentList = ArrayList<Student>()
 
     lateinit var mAdapter : adapters
+
+    val REQ_FOR_STUDENT_INFO = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +42,27 @@ class MainActivity : AppCompatActivity() {
             val clickedStudent = mStudentList[position]
 
             Toast.makeText(this, clickedStudent.name , Toast.LENGTH_SHORT).show()
+
+            studentListView.setOnItemLongClickListener { parent, view, position, id ->
+
+                val longclickedStd = mStudentList[position]
+                Log.d("클릭이벤트",longclickedStd.name)
+
+                Log.d("삭제전개수",mStudentList.size.toString())
+
+                mStudentList.remove(longclickedStd)
+//                학생을 삭제하자
+//                mStudentList.removeAt(position)  해당 위치의 데이터 삭제
+
+                return@setOnItemLongClickListener
+            }
+//            해당 줄을 길게 누려면 실행할 코드를 적는 공간
+//            Boolen값으로 결과를 지정(return)해야함_안한 상태에서는 에러처리
         }
+
+//        학생추가하기 버튼 이벤트
+        makeNewstudBtn.seOn
+
 
     }
 }
